@@ -8,6 +8,7 @@ import { LinkButtonProps } from './LinkButton.props';
 const LinkButton: FC<LinkButtonProps & LinkProps> = ({
   variant = 'primary',
   disabled = false,
+  size = 'big',
   href,
   children,
   className,
@@ -19,19 +20,25 @@ const LinkButton: FC<LinkButtonProps & LinkProps> = ({
     <Link legacyBehavior href={href} {...disabledProps}>
       <a
         className={cn(
-          'flex w-full max-w-[212px] cursor-pointer items-center gap-3 rounded-sm border-2 border-solid p-[10px] text-lg',
+          'flex items-center  rounded-xl border border-solid py-2.5 px-10 text-xl',
           className,
+          { ['w-[140px]']: size == 'small', ['w-[214px]']: size == 'big' },
+
           !disabled && {
-            ['justify-center border-primary bg-primary text-white_light duration-300 hover:bg-hover focus:bg-hover']:
-              variant == 'primary',
-            ['justify-center border-white_light bg-white_light text-primary duration-300 hover:shadow-button_hover']:
-              variant == 'secondary',
+            ['justify-center border-main_dark bg-main_dark text-white duration-300 hover:border-white focus:border-white']:
+              variant == 'colored',
+            ['justify-center border-white bg-white text-main_dark duration-300 hover:border-main_dark']:
+              variant == 'white',
+            ['!max-w-[fit-content] !justify-start border-none bg-transparent py-0 px-0 text-main_theme duration-300 hover:text-main_dark focus:text-main_dark']:
+              variant == 'simple',
           },
           disabled && {
-            ['primary pointer-events-none justify-center border-gray_light bg-gray_light text-white_light']:
-              variant == 'primary',
-            ['border-disabled_secondary bg-disabled_secondary pointer-events-none justify-center text-primary ']:
-              variant == 'secondary',
+            ['primary pointer-events-none justify-center border-gray_dark bg-gray_dark text-white']:
+              variant == 'colored',
+            ['border-gray_dark bg-white pointer-events-none justify-center text-gray_dark ']:
+              variant == 'white',
+            ['!max-w-[fit-content] !justify-start border-none bg-transparent py-0 px-0 text-gray_dark duration-300 ']:
+              variant == 'simple',
           }
         )}
         {...props}

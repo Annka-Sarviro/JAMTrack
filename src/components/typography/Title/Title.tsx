@@ -10,11 +10,12 @@ export const Title: FC<TitleProps> = ({ tag = 'h2', variant = 'dark', children, 
     <Tag
       className={cn(
         {
-          ['text-dark']: variant == 'dark',
-          ['text-white_light']: variant == 'light',
-          [' font-extrabold leading-10  md:text-[44px] xl:text-7xl']: tag == 'h1',
-          [' text-2xl font-semibold md:text-[32px] md:leading-snug xl:text-[40px] xl:leading-[1.4]']:
-            tag == 'h2',
+          ['text-black']: variant == 'black',
+          ['text-main_dark']: variant == 'dark',
+          ['text-white']: variant == 'light',
+          ['font-semibold text-4xl  ']: tag == 'h1',
+          ['urbanist font-normal text-2xl']: tag == 'h2',
+          ['font-normal text-xl ']: tag == 'h3',
         },
         className
       )}
