@@ -5,12 +5,12 @@ import { FC } from 'react';
 import LogoImg from '../../../../public/images/logo.svg';
 import { LogoProps } from './Logo.props';
 
-const Logo: FC<LogoProps> = ({ sticky, width = 176, height = 22, className }) => {
+const Logo: FC<LogoProps> = ({ sticky, width = 94, height = 50, className }) => {
   return (
     <Link
       href={routes.VACANCY}
       className={cn(
-        'block hover:outline-primary focus:outline-primary',
+        'block hover:drop-shadow-md focus:drop-shadow-md',
         { ['py-4']: sticky },
         className
       )}
