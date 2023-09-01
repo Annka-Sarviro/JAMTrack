@@ -20,7 +20,7 @@ const Input: FC<InputProps> = ({
   };
 
   return (
-    <div className="relative">
+    <div className={cn('relative', className)}>
       <input
         id={name}
         className={`h-12 peer placeholder:text-transparent rounded-xl px-6 py-2 ${
@@ -45,10 +45,7 @@ const Input: FC<InputProps> = ({
         </button>
       )}
       <label
-        className={cn(
-          'absolute transition-all -top-6 left-4 peer-focus:-top-6 peer-focus:left-4 peer-placeholder-shown:top-2 peer-placeholder-shown:left-6 text-base peer-focus:text-base peer-placeholder-shown:text-xl text-black peer-focus:text-black peer-placeholder-shown:text-gray_dark ',
-          className
-        )}
+        className="absolute transition-all -top-6 left-4 peer-focus:-top-6 peer-focus:left-4 peer-placeholder-shown:top-2 peer-placeholder-shown:left-6 text-base peer-focus:text-base peer-placeholder-shown:text-xl text-black peer-focus:text-black peer-placeholder-shown:text-gray_dark"
         htmlFor={name}
       >
         {label}
