@@ -8,6 +8,8 @@ import { InputProps } from './Input.props';
 const Input: FC<InputProps> = ({
   label,
   name,
+  register,
+  error,
   button = false,
   className = '',
   type = 'text',
@@ -23,11 +25,17 @@ const Input: FC<InputProps> = ({
     <div className={cn('relative', className)}>
       <input
         id={name}
-        className={`h-12 peer placeholder:text-transparent rounded-xl px-6 py-2 ${
-          button ? 'pr-[52px]' : ''
-        } w-full text-xl`}
-        placeholder={name}
+        className={cn(
+          'h-12 peer placeholder:text-transparent rounded-xl px-6 py-2 w-full text-xl border-gray_light',
+          {
+            ['pr-[52px]']: button,
+            ['border-red_error']: error,
+            ['text-red_error']: error,
+          }
+        )}
+        placeholder={label}
         type={inputType}
+        {...register}
         {...rest}
       />
       {button && (
@@ -50,6 +58,7 @@ const Input: FC<InputProps> = ({
       >
         {label}
       </label>
+      {error && <p className="px-4 text-red_error">{error}</p>}
     </div>
   );
 };
