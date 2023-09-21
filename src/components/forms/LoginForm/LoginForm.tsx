@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { GoogleButton } from '@/components/button';
 import Button from '@/components/button/Button/Button';
 import Input from '@/components/common/Input';
-import { Title } from '@/components/typography/Title/Title';
+import Title from '@/components/typography/Title/Title';
 import { LoginFormProps } from './LoginForm.props';
 
 type FormInputsType = {

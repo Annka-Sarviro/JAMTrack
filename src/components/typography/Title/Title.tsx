@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { TitleProps } from './Title.props';
 
-export const Title: FC<TitleProps> = ({ tag = 'h2', variant = 'dark', children, className }) => {
+const Title: FC<TitleProps> = ({ tag = 'h2', variant = 'dark', children, className }) => {
   const Tag = tag;
 
   return (
@@ -24,3 +24,5 @@ export const Title: FC<TitleProps> = ({ tag = 'h2', variant = 'dark', children, 
     </Tag>
   );
 };
+
+export default Title;
