@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={exo_2.className}>
         <Header />
-        {children}
+        <main className="bg-white">{children}</main>
         <Footer />
       </body>
     </html>

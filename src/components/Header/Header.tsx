@@ -2,8 +2,10 @@ import Logo from '@/components/typography/Logo';
 
 const Header = () => {
   return (
-    <header>
-      <Logo />
+    <header className="bg-green_back py-3">
+      <div className="container">
+        <Logo />
+      </div>
     </header>
   );
 };
