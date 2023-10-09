@@ -26,7 +26,7 @@ const Input: FC<InputProps> = ({
       <input
         id={name}
         className={cn(
-          'h-12 peer placeholder:text-gray_dark rounded-xl px-6 py-2 w-full text-xl border-gray_light',
+          'h-12 peer placeholder:text-transparent rounded-xl px-6 py-2 w-full text-xl border-gray_light',
           {
             ['pr-[52px]']: button,
             ['border-red_error']: error,
@@ -60,7 +60,26 @@ const Input: FC<InputProps> = ({
           )}
         </button>
       )}
-      {/* {error && <p className="absolute px-4 text-red_error">{error}</p>} */}
+      <label
+        className="
+        absolute
+        transition-all
+        -top-6
+        left-4
+        peer-focus:-top-6
+        peer-focus:left-4
+        peer-placeholder-shown:top-2
+        peer-placeholder-shown:left-6
+        text-base
+        peer-focus:text-base
+        peer-placeholder-shown:text-xl
+        text-black
+        peer-focus:text-black
+        peer-placeholder-shown:text-gray_dark"
+        htmlFor={name}
+      >
+        {label}
+      </label>
       {error && (
         <p
           className="

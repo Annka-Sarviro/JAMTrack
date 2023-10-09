@@ -22,6 +22,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className = '' }) => {
 
   const onSubmit = async (data: FormInputsType) => {
     // send data to https://vacancy-api.onrender.com/api/auth/login
+    // auth.js custom authorization email+pass
     console.log(data);
   };
 
@@ -30,7 +31,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className = '' }) => {
       <Title className="mb-7" tag="h2">
         Please, Login
       </Title>
-      <form className="flex flex-col gap-6 mb-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex flex-col gap-12 mb-4" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="E-mail"
           name="email"
