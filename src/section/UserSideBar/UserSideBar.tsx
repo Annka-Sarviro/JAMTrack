@@ -2,6 +2,8 @@
 import IconButton from '@/components/button/IconButton';
 import { useEffect, useState } from 'react';
 
+import { IconsList } from '@/components/UserSideBar/IconsList';
+
 import ArrowRight from '../../../public/icons/rightArrow.svg';
 
 export const UserSideBar = () => {
@@ -13,7 +15,6 @@ export const UserSideBar = () => {
     if (block) {
       setheaderHeight(block.height.toString() + 'px');
     }
-    console.log(headerHeight);
   }, [headerHeight]);
 
   const handleBarOpen = () => {
@@ -23,8 +24,8 @@ export const UserSideBar = () => {
   return (
     <div
       style={{ height: `calc(100vh - ${headerHeight})`, top: headerHeight }}
-      className={`bg-main_card duration-200 rounded-r-xl absolute left-0  ${
-        barOpen ? 'w-[212px]' : 'w-20'
+      className={`bg-main_card duration-500  transition-all rounded-r-xl absolute left-0   'w-20' ${
+        barOpen ? 'w-[248px]' : 'w-20'
       }`}
     >
       <IconButton
@@ -39,7 +40,7 @@ export const UserSideBar = () => {
           className={`w-5 fill-inherit stroke-inherit ${barOpen ? 'rotate-180' : ''} duration-200`}
         />
       </IconButton>
-      UserSideBar
+      <IconsList barOpen={barOpen} />
     </div>
   );
 };

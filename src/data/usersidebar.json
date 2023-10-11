@@ -1,0 +1,49 @@
+{
+  "buttons": {
+    "nav": [
+      {
+        "name": "user",
+        "label": "перехід до сторінки юзера",
+        "text": "Профіль",
+        "link": "/user",
+        "svg": "user"
+      },
+      {
+        "name": "dashboard",
+        "label": "перехід до сторінки вакансій",
+        "text": "Вакансії",
+        "link": "/vacancy",
+        "svg": "dashboard"
+      },
+      {
+        "name": "statistic",
+        "label": "перехід до сторінки статистики",
+        "text": "Статистика",
+        "link": "/statistic",
+        "svg": "statistic"
+      },
+      {
+        "name": "info",
+        "label": "перехід до сторінки з інформацією юзера",
+        "text": "Iнформація",
+        "link": "/help",
+        "svg": "info"
+      }
+    ],
+    "lang": {
+      "label": "перемикач мови сайту",
+      "text": "",
+      "link": "/"
+    },
+    "them": {
+      "label": "перемикач теми",
+      "text": "",
+      "link": "/"
+    },
+    "logout": {
+      "label": "Кнопка виходу з профілю",
+      "text": "Вийти",
+      "link": "/"
+    }
+  }
+}
