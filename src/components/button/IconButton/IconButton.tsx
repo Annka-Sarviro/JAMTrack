@@ -6,6 +6,7 @@ import { IconButtonProps } from './IconButton.props';
 const IconButton: FC<IconButtonProps> = ({
   className,
   label,
+  style,
   children,
   disabled = false,
   accent,
@@ -16,6 +17,7 @@ const IconButton: FC<IconButtonProps> = ({
   return (
     <button
       type={type}
+      style={style}
       className={cn(
         `  ${
           accent
@@ -27,6 +29,8 @@ const IconButton: FC<IconButtonProps> = ({
         {
           [` border-none fill-main_theme hover:w-fit focus:w-fit hover:h-fit focus:h-fit hover:border-none focus:border-none hover:fill-main_dark focus:fill-main_dark hover:bg-white focus:bg-white`]:
             variant == 'add',
+          [` border-none !bg-main_card !rounded-none !rounded-r-xl !h-16 !w-10 hover:!h-16 focus:!f-16 hover:!bg-main_card focus:!bg-main_card hover:!stroke-main_dark !stroke-2 !stroke-[transparent]`]:
+            variant == 'arrow',
         },
         className
       )}

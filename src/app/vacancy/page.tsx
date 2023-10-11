@@ -1,5 +1,12 @@
+import { VacansySection } from '@/section/VacansySection';
+
 const UserPage = () => {
-  return <div>UserPage</div>;
+  return (
+    <main>
+      {/* <UserSideBar /> */}
+      <VacansySection />
+    </main>
+  );
 };
 
 export default UserPage;

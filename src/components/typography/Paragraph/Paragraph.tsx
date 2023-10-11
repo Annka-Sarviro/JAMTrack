@@ -8,16 +8,19 @@ const Paragraph: FC<ParagraphProps> = ({
   // variantFontSize,
   children,
   className,
+  centered = false,
   ...props
 }) => {
   return (
     <p
       className={cn(
         'font-normal',
+
         {
           ['text-main_dark']: variant == 'dark',
           ['text-black']: variant == 'black',
           ['text-white']: variant == 'white',
+          ['text-center']: centered,
           // ['text-xl']: variantFontSize == 'lg_20',
           // ['text-base']: variantFontSize == 'sm_16',
         },
