@@ -10,18 +10,23 @@ import ExitSvg from '../../../../public/icons/exit.svg';
 
 export const IconsList = ({ barOpen }: IconsListProps) => {
   return (
-    <div className="px-4 py-14 flex flex-col items-left justify-between h-full w-full">
+    <div className="px-4 py-14 flex flex-col items-left justify-between h-full w-full gap-12">
       <Navigation barOpen={barOpen} />
-      <Settings barOpen={barOpen} />
-
-      <BarItem
-        label={data.buttons.logout.label}
-        barOpen={barOpen}
-        text={data.buttons.logout.text}
-        link={data.buttons.logout.link}
-      >
-        <ExitSvg className="w-7 fill-inherit " />
-      </BarItem>
+      <div className="flex flex-col gap-24">
+        <Settings barOpen={barOpen} />
+        <ul>
+          <li className="flex items-center justify-start h-[48px]">
+            <BarItem
+              label={data.buttons.logout.label}
+              barOpen={barOpen}
+              text={data.buttons.logout.text}
+              link={data.buttons.logout.link}
+            >
+              <ExitSvg className="w-7 fill-inherit " />
+            </BarItem>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

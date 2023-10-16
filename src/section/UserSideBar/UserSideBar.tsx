@@ -7,15 +7,23 @@ import { IconsList } from '@/components/UserSideBar/IconsList';
 import ArrowRight from '../../../public/icons/rightArrow.svg';
 
 export const UserSideBar = () => {
-  const [headerHeight, setheaderHeight] = useState('74px');
+  const [headerHeight, setHeaderHeight] = useState('74px');
+  const [sideBarHeight, setSideBarHeight] = useState('74px');
   const [barOpen, setBarOpen] = useState(false);
 
   useEffect(() => {
     const block = document?.querySelector('header')?.getBoundingClientRect();
     if (block) {
-      setheaderHeight(block.height.toString() + 'px');
+      setHeaderHeight(block.height.toString() + 'px');
     }
   }, [headerHeight]);
+
+  useEffect(() => {
+    const sideBar = document?.querySelector('.userSideBar')?.getBoundingClientRect();
+    if (sideBar) {
+      setSideBarHeight(sideBar.height.toString() + 'px');
+    }
+  }, []);
 
   const handleBarOpen = () => {
     setBarOpen(!barOpen);
@@ -24,7 +32,7 @@ export const UserSideBar = () => {
   return (
     <div
       style={{ height: `calc(100vh - ${headerHeight})`, top: headerHeight }}
-      className={`bg-main_card duration-500  transition-all rounded-r-xl absolute left-0   'w-20' ${
+      className={` userSideBar min-h-[652px] bg-main_card duration-500  transition-all rounded-r-xl absolute left-0   'w-20' ${
         barOpen ? 'w-[248px]' : 'w-20'
       }`}
     >
@@ -32,7 +40,7 @@ export const UserSideBar = () => {
         label="userIcon"
         variant="arrow"
         accent
-        style={{ bottom: `calc((100vh - ${headerHeight}) / 2 - 12px)` }}
+        style={{ bottom: `calc(${sideBarHeight} / 2 - 12px)` }}
         className={`absolute right-[-34px]`}
         onClick={handleBarOpen}
       >

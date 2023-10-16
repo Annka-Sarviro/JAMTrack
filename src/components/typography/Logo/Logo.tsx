@@ -8,7 +8,7 @@ import { LogoProps } from './Logo.props';
 const Logo: FC<LogoProps> = ({ sticky, width = 94, height = 50, className }) => {
   return (
     <Link
-      href={routes.VACANCY}
+      href={routes.DASHBOARD}
       className={cn(
         'block hover:drop-shadow-md focus:drop-shadow-md',
         { ['py-4']: sticky },

@@ -1,7 +1,7 @@
 const routes = {
-  VACANCY: '/vacancy',
+  DASHBOARD: '/dashboard',
   NOT_FOUND: '/404',
-  HELP: '/help',
+  INFO: '/info',
   ARCHIVE: '/archive',
   STATISTIC: '/statistic',
   USER: '/user',

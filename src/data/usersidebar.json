@@ -12,7 +12,7 @@
         "name": "dashboard",
         "label": "перехід до сторінки вакансій",
         "text": "Вакансії",
-        "link": "/vacancy",
+        "link": "/dashboard",
         "svg": "dashboard"
       },
       {
@@ -26,20 +26,15 @@
         "name": "info",
         "label": "перехід до сторінки з інформацією юзера",
         "text": "Iнформація",
-        "link": "/help",
+        "link": "/info",
         "svg": "info"
       }
     ],
-    "lang": {
-      "label": "перемикач мови сайту",
-      "text": "",
-      "link": "/"
-    },
-    "them": {
-      "label": "перемикач теми",
-      "text": "",
-      "link": "/"
-    },
+
+    "settings": [
+      { "name": "lang", "label": "перемикач мови сайту", "text": "", "link": "/" },
+      { "name": "them", "label": "перемикач теми", "text": "", "link": "/" }
+    ],
     "logout": {
       "label": "Кнопка виходу з профілю",
       "text": "Вийти",
