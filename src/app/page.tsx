@@ -1,8 +1,8 @@
 // import Button from '@/components/button/Button/Button';
-// import IconButton from '@/components/button/IconButton/';
+import IconButton from '@/components/button/IconButton/';
 import { LoginForm } from '@/components/forms';
 // import Title from '@/components/typography/Title';
-// import UserImg from '../../public/icons/user.svg';
+import UserImg from '../../public/icons/user.svg';
 
 export default function Home() {
   return (
@@ -19,11 +19,11 @@ export default function Home() {
 
       {/* <Button variant="colored" size="small">
         Click
-      </Button>
+      </Button>*/}
 
       <IconButton label="userIcon" accent>
         <UserImg className="w-7 fill-inherit " />
-      </IconButton> */}
+      </IconButton>
     </main>
   );
 }

@@ -5,20 +5,23 @@ import { ParagraphProps } from './Paragraph.props';
 
 const Paragraph: FC<ParagraphProps> = ({
   variant = 'dark',
-  // variantFontSize,
+  variantFontSize,
   children,
   className,
+  centered = false,
   ...props
 }) => {
   return (
     <p
       className={cn(
         'font-normal',
+
         {
           ['text-main_dark']: variant == 'dark',
           ['text-black']: variant == 'black',
           ['text-white']: variant == 'white',
-          // ['text-xl']: variantFontSize == 'lg_20',
+          ['text-center']: centered,
+          ['text-2xl']: variantFontSize == 'subtitle',
           // ['text-base']: variantFontSize == 'sm_16',
         },
         className
