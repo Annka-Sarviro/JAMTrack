@@ -8,4 +8,5 @@ export type BarLabelProp = {
   link: string;
   className?: string;
   onClick?: () => void;
+  checked: boolean;
 };
