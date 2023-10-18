@@ -3,10 +3,11 @@ import IconButton from '@/components/button/IconButton';
 import { useEffect, useState } from 'react';
 
 import { IconsList } from '@/components/UserSideBar/IconsList';
+import { dataProps } from './UserSideBar.props';
 
 import ArrowRight from '../../../public/icons/rightArrow.svg';
 
-export const UserSideBar = () => {
+export const UserSideBar = ({ data }: { data: dataProps }) => {
   const [headerHeight, setHeaderHeight] = useState('74px');
   const [sideBarHeight, setSideBarHeight] = useState('74px');
   const [barOpen, setBarOpen] = useState(false);
@@ -37,7 +38,7 @@ export const UserSideBar = () => {
       }`}
     >
       <IconButton
-        label="userIcon"
+        label={data.buttons.menuToggle.label}
         variant="arrow"
         accent
         style={{ bottom: `calc(${sideBarHeight} / 2 - 12px)` }}
@@ -48,7 +49,7 @@ export const UserSideBar = () => {
           className={`w-5 fill-inherit stroke-inherit ${barOpen ? 'rotate-180' : ''} duration-200`}
         />
       </IconButton>
-      <IconsList barOpen={barOpen} />
+      <IconsList barOpen={barOpen} data={data} />
     </div>
   );
 };

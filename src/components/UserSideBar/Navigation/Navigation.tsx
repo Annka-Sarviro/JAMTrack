@@ -8,9 +8,7 @@ import UserSvg from '../../../../public/icons/user.svg';
 import { BarItem } from '../BarItem';
 import { NavigationProps } from './Navigation.props';
 
-import data from '@/data/usersidebar.json';
-
-export const Navigation: FC<NavigationProps> = ({ barOpen }) => {
+export const Navigation: FC<NavigationProps> = ({ barOpen, data }) => {
   return (
     <nav className="">
       <ul className="flex flex-col gap-5">

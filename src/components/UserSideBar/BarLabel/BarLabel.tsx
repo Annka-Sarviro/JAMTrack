@@ -7,16 +7,12 @@ export const BarLabel: FC<BarLabelProp> = ({
   children,
   label,
   barOpen = false,
-
+  onClick,
   className,
 }) => {
-  const handleClick = () => {
-    return console.log('click');
-  };
-
   return (
     <label
-      onClick={handleClick}
+      onChange={onClick}
       className={`${className}  relative rounded-full  flex items-center cursor-pointer ${
         barOpen ? 'w-[88px]' : 'w-12'
       } h-12 bg-green_back  justify-start group duration-500 `}
@@ -38,7 +34,7 @@ export const BarLabel: FC<BarLabelProp> = ({
         </IconButton>
       </div>
       <div
-        className={`inset-x-0 left-[44px] duration-300 	transition-all opacity-0 !absolute peer ${
+        className={`pointer-events-none inset-x-0 left-[44px] duration-300 	transition-all opacity-0 !absolute peer ${
           barOpen
             ? 'peer-checked:opacity-100 transition-all'
             : 'peer-checked:opacity-100  	transition-transform  duration-500 peer-checked:left-1'
