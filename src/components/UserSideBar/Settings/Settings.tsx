@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import { useParams, usePathname, useRouter } from 'next/navigation';
+import { FC, useEffect, useState } from 'react';
 
 import { BarLabel } from '../BarLabel';
 
@@ -9,15 +10,57 @@ import MoonSvg from '../../../../public/icons/moon.svg';
 import SunSvg from '../../../../public/icons/sun.svg';
 import UaSvg from '../../../../public/icons/ua.svg';
 
-import data from '@/data/usersidebar.json';
+export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
+  const router = useRouter();
+  const params = useParams();
+  const lang = params.lang;
+  const pathName = usePathname();
 
-export const Settings: FC<SettingProp> = ({ barOpen }) => {
+  const [currentLang, setCurrentLang] = useState('ua');
+  const [langChecked, setLangChecked] = useState(true);
+  const [themeChecked, setThemeChecked] = useState(true);
+
+  useEffect(() => {
+    setCurrentLang(lang as string);
+  }, [lang]);
+
+  useEffect(() => {
+    currentLang === 'ua' ? setLangChecked(true) : setLangChecked(false);
+  }, [currentLang]);
+
+  const handleLangChange = () => {
+    setLangChecked(true);
+    const redirectedPathName = (locale: string) => {
+      if (!pathName) return '/';
+
+      const segments = pathName.split('/');
+      segments[1] = locale;
+      return segments.join('/');
+    };
+
+    currentLang === 'en'
+      ? router.push(redirectedPathName('ua'))
+      : router.push(redirectedPathName('en'));
+  };
+
+  const handleThemeChange = () => {
+    setThemeChecked(false);
+    console.log('click theme');
+  };
+
   return (
     <ul>
       {data.buttons.settings.map((item, ind: number) => {
         return (
           <li key={ind} className="mb-5 last:mb-0">
-            <BarLabel label={item.label} barOpen={barOpen} text={item.text} link={item.link}>
+            <BarLabel
+              label={item.label}
+              barOpen={barOpen}
+              text={item.text}
+              link={item.link}
+              checked={item.name === 'lang' ? langChecked : themeChecked}
+              onClick={item.name === 'lang' ? handleLangChange : handleThemeChange}
+            >
               {item.name === 'lang'
                 ? [
                     <UaSvg className="w-7 fill-inherit " key="1" />,

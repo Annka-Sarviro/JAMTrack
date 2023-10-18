@@ -7,26 +7,23 @@ export const BarLabel: FC<BarLabelProp> = ({
   children,
   label,
   barOpen = false,
-
+  onClick,
   className,
+  checked = false,
 }) => {
-  const handleClick = () => {
-    return console.log('click');
-  };
-
   return (
     <label
-      onClick={handleClick}
+      onChange={onClick}
       className={`${className}  relative rounded-full  flex items-center cursor-pointer ${
         barOpen ? 'w-[88px]' : 'w-12'
       } h-12 bg-green_back  justify-start group duration-500 `}
     >
-      <input className="sr-only peer  pointer-events-none" value="" type="checkbox" />
+      <input className="sr-only  pointer-events-none" value="" type="checkbox" />
 
       <div
-        className={`inset-x-0 left-1 opacity-500 	transition-transform duration-500 !absolute peer ${
-          barOpen ? 'peer-checked:opacity-0' : 'peer-checked:opacity-0'
-        }  w-10 h-10 pointer-events-none`}
+        className={`inset-x-0 left-1 ${
+          checked ? 'opacity-100' : 'opacity-0'
+        }	transition-transform duration-500 !absolute   w-10 h-10 pointer-events-none`}
       >
         <IconButton
           label={label}
@@ -38,11 +35,9 @@ export const BarLabel: FC<BarLabelProp> = ({
         </IconButton>
       </div>
       <div
-        className={`inset-x-0 left-[44px] duration-300 	transition-all opacity-0 !absolute peer ${
-          barOpen
-            ? 'peer-checked:opacity-100 transition-all'
-            : 'peer-checked:opacity-100  	transition-transform  duration-500 peer-checked:left-1'
-        }  w-10 h-10 pointer-events-none`}
+        className={`${barOpen ? 'left-[44px]' : 'left-1'} ${
+          checked ? 'opacity-0' : 'opacity-100'
+        }  pointer-events-none inset-x-0  duration-300 	transition-all   !absolute  w-10 h-10`}
       >
         <IconButton
           label={label}

@@ -2,7 +2,7 @@
 import IconButton from '@/components/button/IconButton/';
 import { LoginForm } from '@/components/forms';
 // import Title from '@/components/typography/Title';
-import UserImg from '../../public/icons/user.svg';
+import UserImg from '../../../public/icons/user.svg';
 
 export default function Home() {
   return (

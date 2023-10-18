@@ -3,13 +3,19 @@ import IconButton from '@/components/button/IconButton';
 import { useEffect, useState } from 'react';
 
 import { IconsList } from '@/components/UserSideBar/IconsList';
+import { dataProps } from './UserSideBar.props';
 
 import ArrowRight from '../../../public/icons/rightArrow.svg';
 
-export const UserSideBar = () => {
+export const UserSideBar = ({ data }: { data: dataProps }) => {
+  let isBarOpen;
+  if (typeof window !== 'undefined') {
+    const storedValue = localStorage.getItem('isBarOpen');
+    isBarOpen = storedValue ? JSON.parse(storedValue) : false;
+  }
   const [headerHeight, setHeaderHeight] = useState('74px');
-  const [sideBarHeight, setSideBarHeight] = useState('74px');
-  const [barOpen, setBarOpen] = useState(false);
+  const [sideBarHeight, setSideBarHeight] = useState('652px');
+  const [barOpen, setBarOpen] = useState(isBarOpen);
 
   useEffect(() => {
     const block = document?.querySelector('header')?.getBoundingClientRect();
@@ -25,8 +31,15 @@ export const UserSideBar = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const storedValue = localStorage.getItem('isBarOpen');
+    const isBarOpen = storedValue ? JSON.parse(storedValue) : false;
+    setBarOpen(isBarOpen);
+  }, [barOpen]);
+
   const handleBarOpen = () => {
     setBarOpen(!barOpen);
+    localStorage.setItem('isBarOpen', JSON.stringify(!barOpen));
   };
 
   return (
@@ -37,10 +50,10 @@ export const UserSideBar = () => {
       }`}
     >
       <IconButton
-        label="userIcon"
+        label={data.buttons.menuToggle.label}
         variant="arrow"
         accent
-        style={{ bottom: `calc(${sideBarHeight} / 2 - 12px)` }}
+        style={{ top: `calc(${sideBarHeight} / 2 - 12px)` }}
         className={`absolute right-[-34px]`}
         onClick={handleBarOpen}
       >
@@ -48,7 +61,7 @@ export const UserSideBar = () => {
           className={`w-5 fill-inherit stroke-inherit ${barOpen ? 'rotate-180' : ''} duration-200`}
         />
       </IconButton>
-      <IconsList barOpen={barOpen} />
+      <IconsList barOpen={barOpen} data={data} />
     </div>
   );
 };

@@ -1,13 +1,13 @@
+import { addTranslation } from '@/app/i18n/';
 import Paragraph from '../typography/Paragraph';
 
-import data from '@/data/footer.json';
-
-const Footer = () => {
+const Footer = async ({ lang }: { lang: string }) => {
+  const { t } = await addTranslation(lang, 'footer');
   return (
     <footer>
       <div className="container">
         <Paragraph variant="black" centered>
-          {data.text}
+          {t('text')}
         </Paragraph>
       </div>
     </footer>

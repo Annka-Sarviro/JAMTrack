@@ -1,0 +1,47 @@
+{
+  "buttons": {
+    "nav": [
+      {
+        "name": "user",
+        "label": "go to user page",
+        "text": "Profile",
+        "link": "/user",
+        "svg": "user"
+      },
+      {
+        "name": "dashboard",
+        "label": "go to dashboard page",
+        "text": "Dashboard",
+        "link": "/dashboard",
+        "svg": "dashboard"
+      },
+      {
+        "name": "statistic",
+        "label": "go to statistic page",
+        "text": "Statistics",
+        "link": "/statistic",
+        "svg": "statistic"
+      },
+      {
+        "name": "info",
+        "label": "go to user info page",
+        "text": "Info",
+        "link": "/info",
+        "svg": "info"
+      }
+    ],
+
+    "settings": [
+      { "name": "lang", "label": "lang toggle button", "text": "", "link": "/" },
+      { "name": "them", "label": "theme toggle button", "text": "", "link": "/" }
+    ],
+    "logout": {
+      "label": "logout button",
+      "text": "Log out",
+      "link": "/"
+    },
+    "menuToggle": {
+      "label": "menu open and close button"
+    }
+  }
+}

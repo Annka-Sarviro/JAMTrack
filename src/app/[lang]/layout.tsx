@@ -4,21 +4,33 @@ import './globals.css';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { dir } from 'i18next';
+import { languages } from '../i18n/settings';
 
 const exo_2 = Exo_2({ subsets: ['latin'] });
+
+export async function generateStaticParams() {
+  return languages.map(lng => ({ lng }));
+}
 
 export const metadata: Metadata = {
   title: 'JAMTrack',
   description: 'Job Application Management Track',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+  params: { lang },
+}: {
+  children: React.ReactNode;
+  params: { lang: string };
+}) {
   return (
-    <html lang="en">
+    <html lang={lang} dir={dir(lang)}>
       <body className={exo_2.className}>
         <Header />
         {children}
-        <Footer />
+        <Footer lang={lang} />
       </body>
     </html>
   );
