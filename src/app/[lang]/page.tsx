@@ -6,7 +6,7 @@ import UserImg from '../../../public/icons/user.svg';
 
 export default function Home() {
   return (
-    <main className="bg-green_back">
+    <main className="bg-green_back dark:bg-black">
       {/* <Title tag="h1" variant="black">
         Main page
       </Title>

@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/app/theme-provider';
 import type { Metadata } from 'next';
 import { Exo_2 } from 'next/font/google';
 import './globals.css';
@@ -28,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body className={exo_2.className}>
-        <Header />
-        {children}
-        <Footer lang={lang} />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          {children}
+          <Footer lang={lang} />
+        </ThemeProvider>
       </body>
     </html>
   );

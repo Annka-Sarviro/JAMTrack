@@ -1,3 +1,4 @@
+import { useTheme } from 'next-themes';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
 
@@ -19,6 +20,8 @@ export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
   const [currentLang, setCurrentLang] = useState('ua');
   const [langChecked, setLangChecked] = useState(true);
   const [themeChecked, setThemeChecked] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setCurrentLang(lang as string);
@@ -27,6 +30,24 @@ export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
   useEffect(() => {
     currentLang === 'ua' ? setLangChecked(true) : setLangChecked(false);
   }, [currentLang]);
+
+  useEffect(() => {
+    if (theme === 'system') {
+      document.querySelector('html')?.classList.contains('dark')
+        ? setThemeChecked(false)
+        : setThemeChecked(true);
+    } else {
+      theme === 'dark' ? setThemeChecked(false) : setThemeChecked(true);
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const handleLangChange = () => {
     setLangChecked(true);
@@ -44,7 +65,8 @@ export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
   };
 
   const handleThemeChange = () => {
-    setThemeChecked(false);
+    setThemeChecked(!themeChecked);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
     console.log('click theme');
   };
 

@@ -23,7 +23,7 @@ export const BarLabel: FC<BarLabelProp> = ({
       <div
         className={`inset-x-0 left-1 ${
           checked ? 'opacity-100' : 'opacity-0'
-        }	transition-transform duration-500 !absolute   w-10 h-10 pointer-events-none`}
+        }	transition duration-500 !absolute   w-10 h-10 pointer-events-none`}
       >
         <IconButton
           label={label}
@@ -37,7 +37,7 @@ export const BarLabel: FC<BarLabelProp> = ({
       <div
         className={`${barOpen ? 'left-[44px]' : 'left-1'} ${
           checked ? 'opacity-0' : 'opacity-100'
-        }  pointer-events-none inset-x-0  duration-300 	transition-all   !absolute  w-10 h-10`}
+        }  pointer-events-none inset-x-0  duration-500 	transition-all   !absolute  w-10 h-10`}
       >
         <IconButton
           label={label}
