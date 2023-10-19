@@ -1,7 +1,9 @@
 export const VacansySection = () => {
   return (
-    <section>
-      <div className="container">Vacansysection</div>
+    <section className="bg-white">
+      <div className="container">
+        <p className="text-main_dark">Vacansysection</p>
+      </div>
     </section>
   );
 };
