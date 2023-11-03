@@ -1,0 +1,55 @@
+{
+  "status": {
+    "new": "New",
+    "hr": "HR interview",
+    "test": "Test task",
+    "tech": "Technical interview",
+    "reject": "Rejection",
+    "reject_status": {
+      "english": "Low English level",
+      "soft_skills": "Low soft skills",
+      "tech_skills": "Low tech skills",
+      "not_answer": "No answer",
+      "stack": "No valid stack",
+      "close": "Vacancy close",
+      "other": "Other"
+    },
+
+    "status_color": {
+      "new": "blue_card",
+      "hr": "green_card",
+      "test": "yellow_card",
+      "tech": "orange_card",
+      "reject": "red_card"
+    }
+  },
+  "card": {
+    "company_name": "Company",
+    "position": "Position",
+    "link": "Link",
+    "status": "Status",
+    "add": "Add",
+    "placeholder": "enter status",
+    "reason": "reasons",
+    "button": {
+      "ok": {
+        "text": "ok"
+      },
+      "cancel": {
+        "text": "cancel"
+      },
+      "del": {
+        "text": "Delete"
+      },
+      "toArchive": {
+        "text": "to Archive"
+      },
+      "toActive": {
+        "text": "to active"
+      },
+      "readMore": {
+        "text": "Read more"
+      }
+    }
+  }
+}

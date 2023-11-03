@@ -1,9 +1,14 @@
+import { languages } from '@/app/i18n/settings';
 import { VacansySection } from '@/section/VacansySection';
 
-const UserPage = () => {
+export async function generateStaticParams() {
+  return languages.map(lang => ({ lang }));
+}
+
+const UserPage = ({ params: { lang } }: { params: { lang: string } }) => {
   return (
     <main>
-      <VacansySection />
+      <VacansySection lang={lang} />
     </main>
   );
 };

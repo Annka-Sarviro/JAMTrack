@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = ({
         !disabled && {
           ['justify-center border-main_dark bg-main_dark text-white duration-300 hover:border-white focus:border-white']:
             variant == 'colored',
-          ['justify-center border-white bg-white text-main_dark duration-300 hover:border-main_dark']:
+          ['justify-center border-main_dark bg-white text-main_dark duration-300 hover:border-main_dark hover:bg-main_dark hover:text-white']:
             variant == 'white',
         },
         disabled && {

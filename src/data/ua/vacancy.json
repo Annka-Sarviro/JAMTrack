@@ -1,0 +1,55 @@
+{
+  "status": {
+    "new": "Нова",
+    "hr": "HR інтерв'ю",
+    "test": "Тестове завдання ",
+    "tech": "Технічне інтерв'ю",
+    "reject": "Відмова",
+    "reject_status": {
+      "english": "Низкій рівень англійської",
+      "soft_skills": "Недостатні soft skills",
+      "tech_skills": "Недостатні технічні знання",
+      "not_answer": "Немає відповіді",
+      "stack": "Інший stack технологій",
+      "close": "Вакансія закрита",
+      "other": "Інші"
+    },
+    "status_color": {
+      "new": "blue_card",
+      "hr": "green_card",
+      "test": "yellow_card",
+      "tech": "orange_card",
+      "reject": "red_card"
+    }
+  },
+
+  "card": {
+    "company_name": "Компанія",
+    "position": "Посада",
+    "link": "Посилання",
+    "status": "Статус",
+    "add": "Додати",
+    "placeholder": "введить статус",
+    "reason": "Причина",
+    "button": {
+      "ok": {
+        "text": "ok"
+      },
+      "cancel": {
+        "text": "cancel"
+      },
+      "del": {
+        "text": "Видалити"
+      },
+      "toArchive": {
+        "text": "у архів"
+      },
+      "toActive": {
+        "text": "до активних"
+      },
+      "readMore": {
+        "text": "Докладніше"
+      }
+    }
+  }
+}

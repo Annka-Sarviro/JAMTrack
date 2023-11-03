@@ -3,10 +3,10 @@ import type { Metadata } from 'next';
 import { Exo_2 } from 'next/font/google';
 import './globals.css';
 
+import { languages } from '@/app/i18n/settings';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { dir } from 'i18next';
-import { languages } from '../i18n/settings';
 
 const exo_2 = Exo_2({ subsets: ['latin'] });
 
@@ -27,9 +27,9 @@ export default function RootLayout({
   params: { lang: string };
 }) {
   return (
-    <html lang={lang} dir={dir(lang)}>
+    <html lang={lang} dir={dir(lang)} suppressHydrationWarning>
       <body className={exo_2.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="className" defaultTheme="system" enableSystem>
           <Header />
           {children}
           <Footer lang={lang} />

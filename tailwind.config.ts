@@ -37,7 +37,7 @@ const config: Config = {
         red_error: 'rgb(var(--error))',
         red_back: 'rgb(var(--redback))',
         gray_back: 'rgba(var(--grayback))',
-        red_card: 'rgb(var(--red))',
+        red_card: 'rgba(var(--red))',
         blue_card: 'rgb(var(--blue))',
         yellow_card: 'rgb(var(--yellow))',
         green_card: 'rgb(var(--green))',
@@ -49,6 +49,7 @@ const config: Config = {
       },
     },
   },
+  safelist: ['bg-red_card', 'bg-green_card', 'bg-blue_card', 'bg-yellow_card', 'bg-orange_card'],
   plugins: [require('@tailwindcss/forms')],
 };
 export default config;

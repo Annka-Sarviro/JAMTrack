@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import IconButton from '@/components/button/IconButton';
@@ -17,6 +17,8 @@ export const BarItem: FC<BarProp> = ({
   className,
 }) => {
   const pathname = usePathname();
+  const params = useParams();
+  const lang = params.lang;
 
   return (
     <Link
@@ -25,14 +27,14 @@ export const BarItem: FC<BarProp> = ({
     >
       <IconButton
         label={label}
-        accent={pathname === '/' + name ? true : false}
+        accent={pathname === '/' + lang + '/' + name ? true : false}
         className={`w-12 ${barOpen ? 'mr-4' : 'mr-0'} hover:!fill-inherit`}
       >
         {children}
       </IconButton>
       {barOpen && (
         <Paragraph
-          variant={pathname === '/' + name ? 'dark' : 'white'}
+          variant={pathname === '/' + lang + '/' + name ? 'dark' : 'white'}
           variantFontSize="subtitle"
           className="group-hover:text-main_dark duration-500"
         >
