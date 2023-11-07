@@ -4,9 +4,8 @@ import { BarItem } from '../BarItem';
 // import IconButton from '@/components/button/IconButton';
 
 // import data from '@/data/usersidebar.json';
+import { ICONS } from '@/components/icons/icons.const';
 import { IconsListProps } from './IconList.props';
-
-import ExitSvg from '../../../../public/icons/exit.svg';
 
 export const IconsList = ({ barOpen, data }: IconsListProps) => {
   return (
@@ -22,7 +21,7 @@ export const IconsList = ({ barOpen, data }: IconsListProps) => {
               text={data.buttons.logout.text}
               link={data.buttons.logout.link}
             >
-              <ExitSvg className="w-7 fill-inherit " />
+              <ICONS.EXIT className="w-7 fill-inherit " />
             </BarItem>
           </li>
         </ul>

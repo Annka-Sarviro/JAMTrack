@@ -4,12 +4,8 @@ import { FC, useEffect, useState } from 'react';
 
 import { BarLabel } from '../BarLabel';
 
+import { ICONS } from '@/components/icons/icons.const';
 import { SettingProp } from './Setting.props';
-
-import EnSvg from '../../../../public/icons/en.svg';
-import MoonSvg from '../../../../public/icons/moon.svg';
-import SunSvg from '../../../../public/icons/sun.svg';
-import UaSvg from '../../../../public/icons/ua.svg';
 
 export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
   const router = useRouter();
@@ -85,12 +81,12 @@ export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
             >
               {item.name === 'lang'
                 ? [
-                    <UaSvg className="w-7 fill-inherit " key="1" />,
-                    <EnSvg className="w-7 fill-inherit " key="2" />,
+                    <ICONS.UA className="w-7 fill-inherit " key="1" />,
+                    <ICONS.EN className="w-7 fill-inherit " key="2" />,
                   ]
                 : [
-                    <SunSvg className="w-7 fill-inherit " key="3" />,
-                    <MoonSvg className="w-7 fill-inherit " key="4" />,
+                    <ICONS.SUN className="w-7 fill-inherit " key="3" />,
+                    <ICONS.MOON className="w-7 fill-inherit " key="4" />,
                   ]}
             </BarLabel>
           </li>

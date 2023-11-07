@@ -4,45 +4,47 @@ export type vacancyDataProps = {
 };
 
 export type vacancyStatusProps = {
-  new: string;
-  hr: string;
-  test: string;
-  tech: string;
-  reject: string;
-  reject_status: {
-    [key: string]: string;
-  };
+  all_status: { name: string; text: string }[];
+
+  reject_status: { name: string; text: string }[];
+
   status_color: {
     [key: string]: string;
   };
 };
 
 export type vacancyCardProps = {
-  company_name: string;
-  position: string;
-  link: string;
-  status: string;
-  add: string;
-  placeholder: string;
-  reason: string;
-  button: {
-    ok: {
-      text: string;
-    };
-    cancel: {
-      text: string;
-    };
-    del: {
-      text: string;
-    };
-    toArchive: {
-      text: string;
-    };
-    toActive: {
-      text: string;
-    };
-    readMore: {
-      text: string;
-    };
+  company: { [key: string]: string };
+  position: { [key: string]: string };
+  link: { [key: string]: string };
+  status: { [key: string]: string };
+  comment: string;
+  placeholder: { [key: string]: string };
+  reason: { [key: string]: string };
+  button: buttonProps;
+};
+
+export type buttonProps = {
+  add: { [key: string]: string };
+  edit: {
+    [key: string]: string;
+  };
+  ok: {
+    [key: string]: string;
+  };
+  cancel: {
+    [key: string]: string;
+  };
+  del: {
+    [key: string]: string;
+  };
+  toArchive: {
+    [key: string]: string;
+  };
+  toActive: {
+    [key: string]: string;
+  };
+  readMore: {
+    [key: string]: string;
   };
 };

@@ -27,8 +27,9 @@ export const BarItem: FC<BarProp> = ({
     >
       <IconButton
         label={label}
+        variant="sidebar"
         accent={pathname === '/' + lang + '/' + name ? true : false}
-        className={`w-12 ${barOpen ? 'mr-4' : 'mr-0'} hover:!fill-inherit`}
+        className={`w-12 ${barOpen ? 'mr-4' : 'mr-0'} `}
       >
         {children}
       </IconButton>

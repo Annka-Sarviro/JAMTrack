@@ -27,6 +27,7 @@ export const BarLabel: FC<BarLabelProp> = ({
       >
         <IconButton
           label={label}
+          variant="sidebar"
           className={`!w-10 !h-10 ${
             barOpen ? 'mr-4' : 'mr-0'
           } hover:!h-10 hover:!w-10 group-hover:!w-10 group-hover:!h-10`}
@@ -40,6 +41,7 @@ export const BarLabel: FC<BarLabelProp> = ({
         }  pointer-events-none inset-x-0  duration-500 	transition-all   !absolute  w-10 h-10`}
       >
         <IconButton
+          variant="sidebar"
           label={label}
           className={`!w-10 !h-10 ${
             barOpen ? 'mr-4' : 'mr-0'

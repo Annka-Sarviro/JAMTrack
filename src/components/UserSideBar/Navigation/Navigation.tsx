@@ -1,9 +1,5 @@
+import { ICONS } from '@/components/icons/icons.const';
 import { FC } from 'react';
-
-import DashboardSvg from '../../../../public/icons/dashboard.svg';
-import InfoSvg from '../../../../public/icons/info.svg';
-import StatisticSvg from '../../../../public/icons/statistic.svg';
-import UserSvg from '../../../../public/icons/user.svg';
 
 import { BarItem } from '../BarItem';
 import { NavigationProps } from './Navigation.props';
@@ -22,10 +18,10 @@ export const Navigation: FC<NavigationProps> = ({ barOpen, data }) => {
                 link={item.link}
                 name={item.name}
               >
-                {item.name === 'user' && <UserSvg className="w-7 fill-inherit " />}
-                {item.name === 'dashboard' && <DashboardSvg className="w-7 fill-inherit " />}
-                {item.name === 'info' && <InfoSvg className="w-7 fill-inherit " />}
-                {item.name === 'statistic' && <StatisticSvg className="w-7 fill-inherit " />}
+                {item.name === 'user' && <ICONS.USER className="w-7 fill-inherit " />}
+                {item.name === 'dashboard' && <ICONS.DASHBOARD className="w-7 fill-inherit " />}
+                {item.name === 'info' && <ICONS.INFO className="w-7 fill-inherit " />}
+                {item.name === 'statistic' && <ICONS.STATISTIC className="w-7 fill-inherit " />}
               </BarItem>
             </li>
           );

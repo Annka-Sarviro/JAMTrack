@@ -1,19 +1,23 @@
 {
   "status": {
-    "new": "New",
-    "hr": "HR interview",
-    "test": "Test task",
-    "tech": "Technical interview",
-    "reject": "Rejection",
-    "reject_status": {
-      "english": "Low English level",
-      "soft_skills": "Low soft skills",
-      "tech_skills": "Low tech skills",
-      "not_answer": "No answer",
-      "stack": "No valid stack",
-      "close": "Vacancy close",
-      "other": "Other"
-    },
+    "all_status": [
+      { "name": "new", "text": "New" },
+      { "name": "hr", "text": "HR interview" },
+      { "name": "test", "text": "Test task" },
+      { "name": "tech", "text": "Technical interview" },
+      { "name": "reject", "text": "Rejection" },
+      { "name": "offer", "text": "Offer" }
+    ],
+
+    "reject_status": [
+      { "name": "english", "text": "Low English level" },
+      { "name": "soft_skills", "text": "Low soft skills" },
+      { "name": "tech_skills", "text": "Low tech skills" },
+      { "name": "not_answer", "text": "No answer" },
+      { "name": "stack", "text": "No valid stack" },
+      { "name": "close", "text": "Vacancy close" },
+      { "name": "other", "text": "Other" }
+    ],
 
     "status_color": {
       "new": "blue_card",
@@ -24,16 +28,40 @@
     }
   },
   "card": {
-    "company_name": "Company",
-    "position": "Position",
-    "link": "Link",
-    "status": "Status",
-    "add": "Add",
-    "placeholder": "enter status",
-    "reason": "reasons",
+    "company": {
+      "name": "Company",
+      "placeholder": "enter company name",
+      "error_text": "enter valid name"
+    },
+    "position": {
+      "name": "Position",
+      "placeholder": "enter position",
+      "error_text": "enter valid position"
+    },
+    "link": { "name": "Link", "placeholder": "enter link", "error_text": "enter valid link" },
+    "status": { "name": "Status", "placeholder": "enter status", "label": "check status" },
+    "comment": {
+      "name": "Comment",
+      "placeholder": "enter your comment",
+      "label": "your comment",
+      "error_text": "enter valid comment"
+    },
+    "reason": {
+      "name": "reason",
+      "placeholder": "enter reason",
+      "error_text": "enter valid reason"
+    },
     "button": {
+      "add": {
+        "label": "add data",
+        "text": "Add"
+      },
+      "edit": {
+        "label": "edit data"
+      },
       "ok": {
-        "text": "ok"
+        "text": "ok",
+        "label": "ok edit"
       },
       "cancel": {
         "text": "cancel"

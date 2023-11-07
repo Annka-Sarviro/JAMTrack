@@ -1,19 +1,22 @@
 {
   "status": {
-    "new": "Нова",
-    "hr": "HR інтерв'ю",
-    "test": "Тестове завдання ",
-    "tech": "Технічне інтерв'ю",
-    "reject": "Відмова",
-    "reject_status": {
-      "english": "Низкій рівень англійської",
-      "soft_skills": "Недостатні soft skills",
-      "tech_skills": "Недостатні технічні знання",
-      "not_answer": "Немає відповіді",
-      "stack": "Інший stack технологій",
-      "close": "Вакансія закрита",
-      "other": "Інші"
-    },
+    "all_status": [
+      { "name": "new", "text": "Нова" },
+      { "name": "hr", "text": "HR інтерв'ю" },
+      { "name": "test", "text": "Тестове завдання" },
+      { "name": "tech", "text": "Технічне інтерв'ю" },
+      { "name": "reject", "text": "Відмова" },
+      { "name": "offer", "text": "Робота" }
+    ],
+    "reject_status": [
+      { "name": "english", "text": "Низкій рівень англійської" },
+      { "name": "soft_skills", "text": "Недостатні soft skills" },
+      { "name": "tech_skills", "text": "Недостатні технічні знання" },
+      { "name": "not_answer", "text": "Немає відповіді" },
+      { "name": "stack", "text": "Інший stack технологій" },
+      { "name": "close", "text": "Вакансія закрита" },
+      { "name": "other", "text": "Інші" }
+    ],
     "status_color": {
       "new": "blue_card",
       "hr": "green_card",
@@ -24,16 +27,28 @@
   },
 
   "card": {
-    "company_name": "Компанія",
-    "position": "Посада",
-    "link": "Посилання",
-    "status": "Статус",
-    "add": "Додати",
-    "placeholder": "введить статус",
-    "reason": "Причина",
+    "company": { "name": "Компанія", "placeholder": "введіть назву компанії" },
+    "position": { "name": "Посада", "placeholder": "введіть посаду" },
+    "link": { "name": "Посилання", "placeholder": "введіть посилання" },
+    "status": { "name": "Статус", "placeholder": "введіть статус", "label": "виберіть статус" },
+    "comment": {
+      "name": "Коментар",
+      "placeholder": "введіть ваш коментар",
+      "label": "ваш коментар"
+    },
+    "reason": { "name": "Причина", "placeholder": "введіть причину" },
+
     "button": {
+      "add": {
+        "label": "Додати",
+        "text": "Додати"
+      },
+      "edit": {
+        "label": "Редагувати поле"
+      },
       "ok": {
-        "text": "ok"
+        "text": "ok",
+        "label": "Підтвердити зміни"
       },
       "cancel": {
         "text": "cancel"

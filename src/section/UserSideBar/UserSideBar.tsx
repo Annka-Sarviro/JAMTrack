@@ -6,7 +6,7 @@ import { IconsList } from '@/components/UserSideBar/IconsList';
 import { getStorageLang } from '@/utils/getStorageLang';
 import { dataProps } from './UserSideBar.props';
 
-import ArrowRight from '../../../public/icons/rightArrow.svg';
+import { ICONS } from '@/components/icons/icons.const';
 
 export const UserSideBar = ({ data, storeLang }: { data: dataProps; storeLang: boolean }) => {
   const [headerHeight, setHeaderHeight] = useState('74px');
@@ -51,8 +51,8 @@ export const UserSideBar = ({ data, storeLang }: { data: dataProps; storeLang: b
         className={`absolute right-[-34px] `}
         onClick={handleBarOpen}
       >
-        <ArrowRight
-          className={`w-5 fill-inherit stroke-inherit ${barOpen ? 'rotate-180' : ''} duration-200`}
+        <ICONS.ARROW_RIGHT
+          className={`w-5 stroke-inherit fill-inherit ${barOpen ? 'rotate-180' : ''}`}
         />
       </IconButton>
       <IconsList barOpen={barOpen} data={data} />

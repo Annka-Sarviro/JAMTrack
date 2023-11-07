@@ -3,7 +3,8 @@ import { Card } from '@/components/common/Card';
 import { FullCard } from '@/components/common/FullCard';
 
 import IconButton from '@/components/button/IconButton';
-import PlusIcon from '../../../public/icons/plus.svg';
+import { ICONS } from '@/components/icons/icons.const';
+
 import { vacancyDataProps } from './VacancyData.props';
 
 const cardData = {
@@ -17,11 +18,12 @@ const fullCardData = {
   dataPosition: 'qa',
   dataLastStatus: 'test',
   dataStatus: [
-    { status: 'new', data: '12.12.2022' },
-    { status: 'hr', data: '01.02.2023' },
-    { status: 'test', data: '05.03.2023' },
+    { status: 'new', data: '2022-12-12' },
+    { status: 'hr', data: '2023-01-03' },
+    { status: 'test', data: '2023-05-03' },
+    { status: 'reject', data: '2023-03-06', reject_status: 'close' },
   ],
-  dataLink: 'https://superbigcompany.com',
+  dataLink: 'https://www.superbigcompany.com',
   comment: 'very big big company',
 };
 
@@ -40,7 +42,7 @@ export const VacansySection = async ({ lang }: { lang: string }) => {
       </div>
 
       <IconButton label="add" variant="add" className="absolute right-20 bottom-20">
-        <PlusIcon />
+        <ICONS.PLUS className="fill-inherit stroke-inherit" />
       </IconButton>
     </section>
   );

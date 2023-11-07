@@ -6,8 +6,8 @@ export interface IconButtonProps {
   style?: CSSProperties;
   label: string;
   accent?: boolean;
-  variant?: 'add' | 'arrow';
+  variant?: 'add' | 'arrow' | 'sidebar' | 'input';
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
