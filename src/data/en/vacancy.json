@@ -63,6 +63,9 @@
         "text": "ok",
         "label": "ok edit"
       },
+      "close": {
+        "label": "close button"
+      },
       "cancel": {
         "text": "cancel"
       },

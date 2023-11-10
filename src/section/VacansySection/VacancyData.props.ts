@@ -35,6 +35,7 @@ export type buttonProps = {
   cancel: {
     [key: string]: string;
   };
+  close: { label: string };
   del: {
     [key: string]: string;
   };

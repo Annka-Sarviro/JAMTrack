@@ -53,6 +53,9 @@
       "cancel": {
         "text": "cancel"
       },
+      "close": {
+        "label": "кнопка закриття"
+      },
       "del": {
         "text": "Видалити"
       },

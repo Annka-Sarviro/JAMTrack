@@ -1,3 +1,4 @@
+import CloseSvg from '../../../public/icons/close.svg';
 import DashboardSvg from '../../../public/icons/dashboard.svg';
 import EditImg from '../../../public/icons/edit.svg';
 import EnSvg from '../../../public/icons/en.svg';
@@ -34,4 +35,5 @@ export const ICONS = {
   PLUS: PlusIcon,
   EDIT: EditImg,
   OK: OkImg,
+  CLOSE: CloseSvg,
 };

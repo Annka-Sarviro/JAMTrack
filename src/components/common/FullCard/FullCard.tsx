@@ -1,8 +1,14 @@
+'use client';
+
 import Button from '@/components/button/Button';
+import IconButton from '@/components/button/IconButton';
 import { CardCheckbox } from '@/components/common/CardCheckbox';
 import { CardInput } from '@/components/common/CardInput';
+import { AddCategoryForm } from '@/components/forms';
+import { ICONS } from '@/components/icons/icons.const';
 import Paragraph from '@/components/typography/Paragraph';
 import { vacancyCardProps, vacancyStatusProps } from '@/section/VacansySection/VacancyData.props';
+import { useState } from 'react';
 
 export const FullCard = ({
   card,
@@ -20,7 +26,7 @@ export const FullCard = ({
     dataStatus: { status: string; data: string; reject_status?: string }[];
   };
 }) => {
-  console.log(status);
+  const [isOpen, setIsOpen] = useState(false);
   const status_name = status.all_status.map(({ name, text }) =>
     name === cardData.dataLastStatus ? text : ''
   );
@@ -43,6 +49,11 @@ export const FullCard = ({
     const filteredArray = cardData.dataStatus.filter(item => item.status === name);
     const data = filteredArray[0]?.data;
     return data;
+  };
+
+  const handleOpenCategory = () => {
+    setIsOpen(!isOpen);
+    console.log('add');
   };
 
   return (
@@ -99,7 +110,20 @@ export const FullCard = ({
           />
         ))}
       </div>
+      <div className="flex relative">
+        <IconButton label={card.button.add.label} onClick={handleOpenCategory}>
+          <ICONS.PLUS className={`w-5 stroke-inherit fill-inherit `} />
+        </IconButton>
+        <Paragraph>{card.button.add.text}</Paragraph>
 
+        {isOpen && (
+          <AddCategoryForm
+            button={card.button}
+            handleOpenCategory={handleOpenCategory}
+            status={card.status}
+          />
+        )}
+      </div>
       <Button variant="white" className="mx-auto">
         {card.button.del.text}
       </Button>
