@@ -2,6 +2,7 @@
 import IconButton from '@/components/button/IconButton/';
 import { LoginForm } from '@/components/forms';
 // import Title from '@/components/typography/Title';
+import CookieConsent from '@/components/cookies/Cookies';
 import UserImg from '../../../public/icons/user.svg';
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       <IconButton label="userIcon" accent>
         <UserImg className="w-7 fill-inherit " />
       </IconButton>
+      <CookieConsent />
     </main>
   );
 }
