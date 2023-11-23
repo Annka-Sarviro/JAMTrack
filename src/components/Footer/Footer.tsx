@@ -1,13 +1,18 @@
-import { addTranslation } from '@/app/i18n/';
 import Paragraph from '../typography/Paragraph';
 
-const Footer = async ({ lang }: { lang: string }) => {
-  const { t } = await addTranslation(lang, 'footer');
+type dataType = {
+  data: {
+    text: string;
+  };
+};
+
+const Footer = async ({ data }: dataType) => {
+  const { text } = data;
   return (
     <footer>
       <div className="container">
         <Paragraph variant="black" centered>
-          {t('text')}
+          {text}
         </Paragraph>
       </div>
     </footer>

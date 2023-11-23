@@ -5,13 +5,13 @@ import './globals.css';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { dir } from 'i18next';
-import { languages } from '../i18n/settings';
+import { Locale, i18n } from '@/i18n.config';
+import { getDictionary } from '@/lib/dictionary';
 
 const exo_2 = Exo_2({ subsets: ['latin'] });
 
 export async function generateStaticParams() {
-  return languages.map(lng => ({ lng }));
+  return i18n.locales.map(locale => ({ lang: locale }));
 }
 
 export const metadata: Metadata = {
@@ -19,20 +19,22 @@ export const metadata: Metadata = {
   description: 'Job Application Management Track',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
+  const data = await getDictionary(lang);
+
   return (
-    <html lang={lang} dir={dir(lang)}>
+    <html lang={lang} suppressHydrationWarning>
       <body className={exo_2.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           {children}
-          <Footer lang={lang} />
+          <Footer data={data} />
         </ThemeProvider>
       </body>
     </html>

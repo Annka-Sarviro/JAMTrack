@@ -1,3 +1,4 @@
+import { i18n } from '@/i18n.config';
 import { useTheme } from 'next-themes';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
@@ -51,17 +52,35 @@ export const Settings: FC<SettingProp> = ({ barOpen, data }) => {
 
   const handleLangChange = () => {
     setLangChecked(true);
-    const redirectedPathName = (locale: string) => {
-      if (!pathName) return '/';
+    currentLang === 'en'
+      ? router.push(redirectedPathName('ua'))
+      : router.push(redirectedPathName('en'));
+  };
+
+  const redirectedPathName = (locale: string) => {
+    if (!pathName) return '/';
+
+    const pathnameIsMissingLocale = i18n.locales.every(
+      locale => !pathName.startsWith(`/${locale}/`) && pathName !== `/${locale}`
+    );
+
+    if (pathnameIsMissingLocale) {
+      if (locale === i18n.defaultLocale) return pathName;
+      return `/${locale}${pathName}`;
+    } else {
+      if (locale === i18n.defaultLocale) {
+        const segments = pathName.split('/');
+        const isHome = segments.length === 2;
+        if (isHome) return '/';
+
+        segments.splice(1, 1);
+        return segments.join('/');
+      }
 
       const segments = pathName.split('/');
       segments[1] = locale;
       return segments.join('/');
-    };
-
-    currentLang === 'en'
-      ? router.push(redirectedPathName('ua'))
-      : router.push(redirectedPathName('en'));
+    }
   };
 
   const handleThemeChange = () => {

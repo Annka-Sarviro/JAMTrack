@@ -1,9 +1,11 @@
-import { getDictionary, languages } from '@/app/i18n/settings';
+import { Locale, i18n } from '@/i18n.config';
 import { UserSideBar } from '@/section/UserSideBar';
-import { getStorageLang } from '@/utils/getStorageLang';
+
+import { getDictionary } from '@/lib/dictionary';
+import { getStorageBar } from '@/utils/getStorageBar';
 
 export async function generateStaticParams() {
-  return languages.map(lang => ({ lang }));
+  return i18n.locales.map(locale => ({ lang: locale }));
 }
 
 export default async function DashboardLayout({
@@ -11,13 +13,13 @@ export default async function DashboardLayout({
   params: { lang },
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
-  const allData = await getDictionary(lang, 'usersidebar');
+  const data = await getDictionary(lang);
 
   return (
     <section>
-      <UserSideBar data={allData} storeLang={getStorageLang()} />
+      <UserSideBar data={data} openBar={getStorageBar()} />
       {children}
     </section>
   );
