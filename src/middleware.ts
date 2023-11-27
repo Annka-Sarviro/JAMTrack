@@ -1,33 +1,9 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
+import { chain } from '@/middlewares/chain'
+import { withAuthMiddleware } from '@/middlewares/middleware1'
+import { withI18nMiddleware } from '@/middlewares/middleware2'
 
-import { i18n } from '@/i18n.config';
-
-import { match as matchLocale } from '@formatjs/intl-localematcher';
-
-function getLocale() {
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-
-  const locale = matchLocale(locales, locales, i18n.defaultLocale);
-
-  return locale;
-}
-
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = i18n.locales.every(
-    locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale();
-    return NextResponse.redirect(
-      new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url)
-    );
-  }
-}
+export default chain([withAuthMiddleware, withI18nMiddleware])
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|public|images|icons|meta|favicon.ico).*)'],
-};
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+}
