@@ -1,3 +1,4 @@
+import { authOptions } from '@/app/api/auth/_options';
 import { Navigation } from '@/components/UserSideBar/Navigation';
 import { Settings } from '@/components/UserSideBar/Settings';
 import { BarItem } from '../BarItem';
@@ -5,16 +6,21 @@ import { BarItem } from '../BarItem';
 // import IconButton from '@/components/button/IconButton';
 
 // import data from '@/data/usersidebar.json';
-import { signOut } from 'next-auth/react';
+import { getSession, signOut } from 'next-auth/react';
 import ExitSvg from '../../../../public/icons/exit.svg';
 import { IconsListProps } from './IconList.props';
 
 export const IconsList = ({ barOpen, data }: IconsListProps) => {
   const handleClick = async () => {
+    const { accessToken } = await getSession(authOptions);
+
+    if (!accessToken) {
+      return;
+    }
     const res = await fetch('https://vacancy-api-0jon.onrender.com/api/auth/logout', {
       method: 'GET',
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFubmthX251aGFAaS51YSIsImlkIjoiOWZhNjkwNzAtOTM0OC00MzM1LWI1NDUtNzE5OWE0ZDQyNjFhIiwiaWF0IjoxNzAxMTA4NTM3LCJleHAiOjE3MDExOTQ5Mzd9.4j-Z_zup9WsSo5R1ZvJs71fzJJ_XAz1kgx59fDM89-w`,
+        Authorization: `Bearer ${accessToken}`,
         'token-type': 'access_token',
       },
     });
@@ -23,7 +29,8 @@ export const IconsList = ({ barOpen, data }: IconsListProps) => {
 
       return null;
     }
-
+    const out = await res.json();
+    console.log('out', out);
     signOut({ redirect: false, callbackUrl: '/foo' });
   };
 

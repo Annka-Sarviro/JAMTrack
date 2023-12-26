@@ -1,6 +1,7 @@
+import type { NextAuthOptions } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import CredentialsProvider from 'next-auth/providers/credentials';
-// import GoogleProvider from 'next-auth/providers/google';
+import GoogleProvider from 'next-auth/providers/google';
 
 async function refreshToken(token: JWT): Promise<JWT> {
   const res = await fetch('https://vacancy-api-0jon.onrender.com/api/tokens/refresh-token', {
@@ -13,7 +14,9 @@ async function refreshToken(token: JWT): Promise<JWT> {
   });
 
   const response = await res.json();
-  console.log('refresh', response);
+
+  token.accessToken = response.accessToken;
+  token.refreshToken = response.refreshToken;
   return {
     ...token,
   };
@@ -21,18 +24,24 @@ async function refreshToken(token: JWT): Promise<JWT> {
 
 export const authOptions = {
   pages: {
-    signUp: '/signup',
     signIn: '/',
-    logout: '/dashboard',
   },
   session: {
     strategy: 'jwt',
   },
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
-    // }),
+    GoogleProvider({
+      name: 'GoogleProvider',
+      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+      authorization: {
+        params: {
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code',
+        },
+      },
+    }),
 
     CredentialsProvider({
       name: 'credentials',
@@ -40,7 +49,7 @@ export const authOptions = {
         email: {},
         password: {},
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
         const { email, password } = credentials;
@@ -55,31 +64,36 @@ export const authOptions = {
           },
         });
 
-        if (res.status == 401) {
+        if (res.status === 401 || res.status === 400) {
           console.log('401', res.statusText);
 
           return null;
         }
-
+        console.log('ppp');
         const data = await res.json();
-
         return data;
       },
     }),
   ],
   callbacks: {
-    async jwt({ user, token }) {
+    async jwt(props) {
+      const { user, token } = props;
+
       if (user) {
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
+        return token;
       }
+      // @ts-ignore
+      if (Math.floor(new Date().getTime() / 1000) < token?.exp) return token;
 
-      // if (Math.floor(new Date().getTime() / 1000) < token.exp) return token;
-      // console.log('call', token);
       return await refreshToken(token);
     },
-
+    // @ts-ignore
     async session({ token, session }) {
+      if (!session) {
+        return null;
+      }
       const res = await fetch('https://vacancy-api-0jon.onrender.com/api/users/current', {
         method: 'GET',
         headers: {
@@ -100,4 +114,6 @@ export const authOptions = {
       return session;
     },
   },
-};
+} satisfies NextAuthOptions;
+
+//

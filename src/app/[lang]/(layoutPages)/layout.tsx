@@ -20,7 +20,7 @@ export default async function DashboardLayout({
 }) {
   const data = await getDictionary(lang);
   const session = await getServerSession(authOptions);
-  console.log('sess', session);
+
   if (!session) {
     redirect('/');
   }
