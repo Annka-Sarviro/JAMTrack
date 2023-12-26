@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Locale, i18n } from '@/i18n.config';
 import { getDictionary } from '@/lib/dictionary';
+import Providers from './providers';
 
 const exo_2 = Exo_2({ subsets: ['latin'] });
 
@@ -32,9 +33,11 @@ export default async function RootLayout({
     <html lang={lang} suppressHydrationWarning>
       <body className={exo_2.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          {children}
-          <Footer data={data} />
+          <Providers>
+            <Header />
+            {children}
+            <Footer data={data} />
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

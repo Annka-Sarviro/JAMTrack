@@ -1,31 +1,29 @@
-// import Button from '@/components/button/Button/Button';
-import IconButton from '@/components/button/IconButton/';
+import { Locale } from '@/i18n.config';
+import { getDictionary } from '@/lib/dictionary';
+
+// import { authOptions } from '@/app/api/auth/_options';
+// import { getServerSession } from 'next-auth';
+
 import { LoginForm } from '@/components/forms';
-// import Title from '@/components/typography/Title';
-import CookieConsent from '@/components/cookies/Cookies';
-import UserImg from '../../../public/icons/user.svg';
 
-export default function Home() {
+export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
+  const { text } = await getDictionary(lang);
+  // const session = await getServerSession(authOptions);
+  // const user = session?.user;
+
   return (
-    <main className="bg-green_back dark:bg-black">
-      {/* <Title tag="h1" variant="black">
-        Main page
-      </Title>
-      <Title tag="h2" variant="dark">
-        Super puper site
-      </Title> */}
-      {/* <Paragraph>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</Paragraph> */}
+    <section className="py-24">
+      <div className="container">
+        <p className="text-gray-500">{text}</p>
 
-      <LoginForm className="flex flex-col p-6 w-[486px]" />
+        <div className="mt-6">
+          {/* <pre className="mt-4">
+            <code>{JSON.stringify({ name: user?.name }, null, 2)}</code>
+          </pre> */}
 
-      {/* <Button variant="colored" size="small">
-        Click
-      </Button>*/}
-
-      <IconButton label="userIcon" accent>
-        <UserImg className="w-7 fill-inherit " />
-      </IconButton>
-      <CookieConsent />
-    </main>
+          <LoginForm />
+        </div>
+      </div>
+    </section>
   );
 }

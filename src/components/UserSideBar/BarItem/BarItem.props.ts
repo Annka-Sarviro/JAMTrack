@@ -8,4 +8,5 @@ export type BarProp = {
   link: string;
   name?: string;
   className?: string;
+  onClick?: any;
 };

@@ -15,6 +15,7 @@ export const BarItem: FC<BarProp> = ({
   name = '',
   link = '/',
   className,
+  onClick,
 }) => {
   const pathname = usePathname();
 
@@ -22,6 +23,7 @@ export const BarItem: FC<BarProp> = ({
     <Link
       href={link}
       className={`${className}  flex items-center justify-start group duration-500 `}
+      onClick={onClick}
     >
       <IconButton
         label={label}

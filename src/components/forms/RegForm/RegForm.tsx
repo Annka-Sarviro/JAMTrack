@@ -3,42 +3,77 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { GoogleButton } from '@/components/button';
 import Button from '@/components/button/Button/Button';
 import Input from '@/components/common/Input';
 import Title from '@/components/typography/Title/Title';
+import { Backend_URL } from '@/lib/Constants';
+
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { LoginFormProps } from './LoginForm.props';
+import { useSearchParams } from 'next/navigation';
+import { RegFormProps } from './RegForm.props';
 
 type FormInputsType = {
   email: string;
   password: string;
+  username: string;
 };
 
-export const LoginForm: FC<LoginFormProps> = ({ className = '' }) => {
+export const RegForm: FC<RegFormProps> = ({ className = '' }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputsType>({ mode: 'onBlur' });
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const onSubmit = async (data: FormInputsType) => {
-    const res = await signIn('credentials', { ...data, redirect: false });
+    const res = await fetch(Backend_URL + '/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
 
-    if (res?.status === 200) {
-      router.push('/dashboard');
-      // redirect('ua/dashboard');
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!res.ok) {
+      console.log(data);
+      alert(res.statusText);
+      return;
     }
+    const response = await res.json();
+    console.log(response);
+    signIn(undefined, { data, callbackUrl });
   };
 
   return (
     <div className={className}>
       <Title className="mb-7" tag="h2">
-        Please, Login
+        Please, SignUp
       </Title>
       <form className="flex flex-col gap-12 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="User name"
+          name="username"
+          type="text"
+          register={register('username', {
+            required: 'This field is required',
+            pattern: {
+              value: /[a-zA-Z0-9.]/,
+              message: 'Not valid username',
+            },
+            maxLength: {
+              value: 63,
+              message: 'Max length is 63 chars',
+            },
+          })}
+          error={errors.username?.message}
+        />
+
         <Input
           label="E-mail"
           name="email"
@@ -76,10 +111,6 @@ export const LoginForm: FC<LoginFormProps> = ({ className = '' }) => {
         />
         <Button type="submit">Login</Button>
       </form>
-      <div className="flex flex-col gap-4 w-fit">
-        <span className="text-center">or</span>
-        <GoogleButton />
-      </div>
     </div>
   );
 };
